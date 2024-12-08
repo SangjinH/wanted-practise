@@ -18,17 +18,15 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URLEncoder;
 import java.util.List;
 
 import static com.wanted.backend.market.common.constants.GoodsApiUrl.GOODS_BASE_URL;
-import static com.wanted.backend.market.common.constants.ResponseCode.SUCCESS;
 
 @Slf4j
 @RestController
 @RequestMapping(GOODS_BASE_URL)
 @RequiredArgsConstructor
-public class GoodsController {
+public class GoodsController extends BasicController {
 
     private final GoodsQueryService goodsQueryService;
 
@@ -46,14 +44,6 @@ public class GoodsController {
 
         GoodsDetailView detailView = goodsQueryService.findById(new GoodsDetailQuery(memberId, goodsId));
         return new ResponseEntity<>(new GoodsDetailResponse(detailView), getSuccessHeader(), HttpStatus.OK);
-    }
-
-
-    private HttpHeaders getSuccessHeader() {
-        HttpHeaders headers = new HttpHeaders();
-        headers.set("resultCode", SUCCESS.getResultCode());
-        headers.set("resultMessage", URLEncoder.encode(SUCCESS.getResultMessage()));
-        return headers;
     }
 
 }
