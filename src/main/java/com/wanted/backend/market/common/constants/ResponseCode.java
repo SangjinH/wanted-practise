@@ -27,6 +27,7 @@ public enum ResponseCode {
     SUCCESS("0000", "정상응답", HttpStatus.OK),
     INVALID_PARAMETER("0099", "요청값에 오류가 있습니다.", HttpStatus.BAD_REQUEST),
     NOT_VALID_ID_PASSWORD("1000", "아이디 혹은 비밀번호가 일치하지 않습니다.", HttpStatus.UNAUTHORIZED),
+    GOODS_NOT_FOUND_EXCEPTION("2000", "상품정보가 존재하지 않습니다.", HttpStatus.BAD_REQUEST),
 
     ;
 
